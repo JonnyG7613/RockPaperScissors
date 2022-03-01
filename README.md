@@ -1,1 +1,2 @@
+This is a rock, paper, scissors program. When the page is first loaded, the splash page asks you to click the button to proceed.  Once you click it, an alert box pops up prompting the user to enter "Rock, paper or scissors."  After entering the selection, it compares the answer to a randomly generated selection by the computer and then tallies the score for whomever wins.  It does not count ties as a win or a loss for either party.  After five games, it determines a winner and displays the final score.
 # RockPaperScissors

@@ -1,0 +1,25 @@
+body {
+    display: flexbox;
+}
+
+#buttons {
+    justify-content: center;
+}
+
+.selection {
+    padding: 0;
+    margin: 100px;
+
+}
+
+h1 {
+    text-align: center;
+    margin: auto;
+    font-size: 48px;
+}
+
+img {
+    border: 5px solid black;
+    width: 200px;
+    height: 200px;
+}

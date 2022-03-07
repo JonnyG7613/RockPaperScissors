@@ -1,6 +1,9 @@
-function computerPlay() {
+let selection = document.getElementsByClassName('selection');
+
+// The computer makes their selection randomly
+function computerSelection() {
     let selection = "rock"
-    let random = parseInt((Math.random()*100));
+    let random = parseInt((Math.random() * 100));
     if (random % 3 == 0) {
         selection = "paper";
     } else if (random % 3 == 1) {
@@ -9,66 +12,50 @@ function computerPlay() {
     return selection;
 }
 
-function playerPlay() {
-    let playerChoice = window.prompt("Rock, paper or scissors?");
-    return (playerChoice);
+// The player makes their selection and then the winner is decided
+function playerSelection(e) {
+    let playerPick = this.id;
+    if (playerPick === 'scissors') {
+        winner('scissors', computerSelection());
+    } else if (playerPick === 'rock') {
+        winner('rock', computerSelection());
+    } else {
+        winner('paper', computerSelection());
+    }
 }
 
-function winner(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
-        return(`Both the player and computer picked ${playerSelection}. `);
-    } else if (playerSelection === "rock") {
-        switch (computerSelection) {
-            case "scissors":
-                return("The player wins this round. Rock beats scissors. ");
-            case "paper":
-                return("The computer wins this round. Paper beats rock. ");
+// A winner is selected after the choices are submitted.
+function winner(player, computer) {
+    const playerChoice = player;
+    const computerChoice = computer;
+    if (playerChoice === 'rock') {
+        console.log(computerChoice);
+        if (computerChoice === 'rock') {
+            alert('You tie');
+        } else if (computerChoice === 'paper') {
+            alert('You lose');
+        } else if (computerChoice === 'scissors') {
+            alert('You win');
         }
-    } else if (playerSelection === "scissors") {
-        switch (computerSelection) {
-            case "paper":
-                return("The player wins this round. Scissors beats paper. ");
-            case "rock":
-                return("The computer wins this round. Rock beats scissors. ");
+    } else if (playerChoice === 'paper') {
+        if (computerChoice === 'rock') {
+            alert('You win');
+        } else if (computerChoice === 'paper') {
+            alert('You tie');
+        } else if (computerChoice === 'scissors') {
+            alert('You lose');
         }
     } else {
-        switch (computerSelection) {
-            case "rock":
-                return("The player wins this round. Paper beats rock. ");
-            case "scissors":
-                return("The computer wins this round. Scissors beats paper. ");
+        if (computerChoice === 'rock') {
+            alert('You lose');
+        } else if (computerChoice === 'paper') {
+            alert('You win');
+        } else if (computerChoice === 'scissors') {
+            alert('You tie');
         }
     }
 }
 
-function main() {
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = playerPlay();
-        if (playerSelection == null) {
-            alert("Now I'm sad");
-            break;
-        } else {
-            playerSelection = playerSelection.toLocaleLowerCase();
-            if ((playerSelection == "rock") || (playerSelection == "paper") || (playerSelection == "scissors")) {
-                const computerSelection = computerPlay();
-                let rpsWinner = winner(playerSelection, computerSelection);
-                console.log(`player pics ${playerSelection}`)
-                console.log(`comp picks ${computerSelection}`);
-                if (rpsWinner[4] == "p") {
-                    playerScore++;
-                } else if (rpsWinner[4] == "c") {
-                    computerScore++;
-                } else {
-                    i--;
-                }
-                alert(`${rpsWinner}The score is player ${playerScore} and computer ${computerScore}`);
-            } else {
-                alert("Please enter either rock, paper or scissors.");
-                i--;
-           }
-        }
-    }
-    alert(`The final score is player ${playerScore} and computer ${computerScore}`)
+for (let i = 0; i < selection.length; i++) {
+    selection[i].addEventListener('click', playerSelection);
 }

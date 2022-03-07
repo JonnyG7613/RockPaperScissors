@@ -1,15 +1,21 @@
 body {
-    display: flexbox;
+    display: flex;
+    flex-direction: column;
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+    margin: 25px;
 }
 
+
 #buttons {
-    justify-content: center;
+    flex-direction: row;
+    margin: 25px;
 }
 
 .selection {
     padding: 0;
-    margin: 100px;
-
+    margin: 0 25px;
 }
 
 h1 {
